@@ -1,3 +1,3 @@
-# PKU Driver <i>燕园赛车手</i>
+# PKU Driver
 <br>
-驾驶着你的小赛车在燕园里畅游吧<br>
+Weekly Project of Java Programming.
