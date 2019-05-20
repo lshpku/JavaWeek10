@@ -44,7 +44,7 @@ public class GraphBoard extends JFrame {
 	 * loadResource - Load all graph resources that are configured in the cfg file.
 	 */
 	private void loadResource(String cfgFilePath) throws IOException, InterruptedException {
-		int bgAll = 8;
+		int bgAll = 9;
 		int bdAll = 3;
 		int carAll = 5;
 		BufferedReader reader = new BufferedReader(new FileReader(cfgFilePath));
@@ -62,7 +62,7 @@ public class GraphBoard extends JFrame {
 		for (int i = 0; i < carAll; i++) {
 			line = reader.readLine();
 			Image img = getImage(line);
-			Image smallImg = img.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+			Image smallImg = img.getScaledInstance(400, 400, Image.SCALE_SMOOTH);
 			carList.add(smallImg);
 		}
 	}
@@ -102,14 +102,14 @@ public class GraphBoard extends JFrame {
     @Override
 	public void paint(Graphics g) {
 		g.drawImage(bgList.get(routeIndex), 0, 0, this);
-		g.drawImage(carList.get(carIndex), carPos, 450, this);
+		g.drawImage(carList.get(carIndex), carPos, 300, this);
 		for (Building b : buildings) {
 			g.drawImage(bdList.get(b.buildingType), b.x, b.y, this);
 		}
 
 	}
 
-	public int carPos = 550;
+	public int carPos = 350;
 	public static int midX = 550; // to put a car in the center
 
 	public GraphBoard() throws IOException, InterruptedException {
@@ -117,7 +117,8 @@ public class GraphBoard extends JFrame {
 		setVisible(true);
 		graph = this.getGraphics();
 		loadResource("car.cfg");
-		graph.drawImage(bgList.get(routeIndex), 0, 0, this);
-		graph.drawImage(carList.get(carIndex), carPos, 450, this);
+		this.repaint();
+//		graph.drawImage(bgList.get(routeIndex), 0, 0, this);
+//    	graph.drawImage(carList.get(carIndex), carPos, 300, this);
 	}
 }
